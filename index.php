@@ -10,7 +10,7 @@
 </head>
 <body>	
 	<ul id="menu">
-		<a href="http://www.pj41491.zut.edu.pl/arduino//index.php"><li>Strona główna</li></a>
+		<a href="./index.php"><li>Strona główna</li></a>
 		<a href="?param=1"><li>Terrarium</li></a>
 		<a href="?param=2"><li>Historia danych</li></a>
 	</ul>

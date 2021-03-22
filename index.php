@@ -26,9 +26,9 @@
 			if(isset($_GET["temperatura"])) {
 				$temperatura = $_GET["temperatura"];
 				$wilgotnosc = $_GET["wilgotnosc"];
-				$dodawanie = "INSERT INTO dane (id_dane, data, temperatura, wilgotnosc) VALUES (NULL , CURRENT_TIMESTAMP, '$temperatura', '$wilgotnosc')";
-				$dodaj = mysqli_query($pol,$dodawanie);
 				$ustawiona = $_GET["ustawiona"];
+				$dodawanie = "INSERT INTO dane (id_dane, data, temperatura, wilgotnosc, tempZadana) VALUES (NULL , CURRENT_TIMESTAMP, '$temperatura', '$wilgotnosc', '$ustawiona')";
+				$dodaj = mysqli_query($pol,$dodawanie);
 				$aktualizuj = "UPDATE temperaturaZadana SET temperatura='$ustawiona', dataZmiany=CURRENT_TIMESTAMP WHERE id=1";
 				$dodaj = mysqli_query($pol,$aktualizuj);
 			}
@@ -115,8 +115,11 @@
 				}
 			}
 			else {
-				echo "<b>Witam, oto mój projekt. :)</b><br>
-					<br><img id='zdjecie' src='files/image2.JPEG' alt='zdjecie arduino' style='width: 350px; height: auto;'>";
+				echo "<b>Witam</b><br>
+					<br><img id='zdjecie' src='files/image2.JPEG' alt='zdjecie arduino1' style='width: 350px; height: auto;'>
+					<br><img id='zdjecie' src='files/zdjGotowe1.JPEG' alt='zdjecie arduino2' style='width: 350px; height: auto;'>
+					<img id='zdjecie' src='files/zdjGotowe2.JPEG' alt='zdjecie arduino3' style='width: auto; height: 350px;'>
+					";
 			}
 			/*if(tr) {
 				mysqli_close($pol);

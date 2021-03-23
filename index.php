@@ -92,10 +92,10 @@
 				elseif($_GET["param"] == 2) {
 					echo "
 						<form action='./wykres.php' method='post'>
-							<label for='numberOfSamples'>Ilość ostatnich pomiarów:</label><br>
-							<input type='number' min='5' max='99' id='numberOfSamples' name='numberOfSamples'><br>
-							<input type='submit' value='Pokaż wykres'>
-				  		</form>
+							<label for='numberOfSamples' style='margin: 5px 10px;'>Ilość ostatnich pomiarów:</label><br>
+							<input type='number' min='5' max='99' id='numberOfSamples' name='numberOfSamples' style='margin: 5px 10px;'><br>
+							<input type='submit' value='Pokaż wykres' style='margin: 5px 10px;'>
+				  		</form><br>
 					";
 					echo "<table id ='dane'>
 						<tr>

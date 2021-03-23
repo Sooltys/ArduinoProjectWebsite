@@ -46,14 +46,12 @@
             ]);
 
             var options = {
+                height: 600,
                 hAxis: {
                 title: 'Ostatnie pomiary temperatury ( najnowsza po prawej )'
                 },
                 vAxis: {
                 title: 'Temperatura ( °C )'
-                },
-                series: {
-                1: {curveType: 'function'}
                 }
             };
 
@@ -78,7 +76,7 @@
         ?>
     </h3>
 
-    <div id="chart_div" style="height: 600px;"></div>
+    <div id="chart_div" ></div>
 
 </body>
 </html> 

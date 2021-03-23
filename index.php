@@ -90,6 +90,13 @@
 					
 				}
 				elseif($_GET["param"] == 2) {
+					echo "
+						<form action='./wykres.php' method='post'>
+							<label for='numberOfSamples'>Ilość ostatnich pomiarów:</label><br>
+							<input type='number' min='5' max='99' id='numberOfSamples' name='numberOfSamples'><br>
+							<input type='submit' value='Pokaż wykres'>
+				  		</form>
+					";
 					echo "<table id ='dane'>
 						<tr>
 							<th>Lp.</th>

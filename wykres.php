@@ -4,6 +4,8 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
 	<meta name="Description" content= "opis" />
 	<meta name="Keywords" content="slowa kluczowe" />
+    <title>praca</title>
+	<link rel="icon" href="files\image1.jpg"/>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         google.charts.load('current', {packages: ['corechart', 'line']});
@@ -12,8 +14,8 @@
         function drawCurveTypes() {
             var data = new google.visualization.DataTable();
             data.addColumn('number', 'X');
-            data.addColumn('number', 'Temp');
-            data.addColumn('number', 'Zadana');
+            data.addColumn('number', 'Temperatura odczytana');
+            data.addColumn('number', 'Temperatura zadana');
 
             data.addRows([
                 <?php
@@ -21,10 +23,14 @@
                 if($pol) {
                     $baza = mysqli_select_db($pol,'pj41491');
                     if($baza) {
+                        $numberOfSamples = '30';
+                        if(isset($_POST["numberOfSamples"]) && $_POST["numberOfSamples"] != 0) {
+                            $numberOfSamples = $_POST["numberOfSamples"];
+                        }
                         //$zapytanie = "SELECT * FROM dane ORDER BY data DESC LIMIT 0, 10";
-                        $zapytanie = "SELECT * FROM dane WHERE id_dane > (SELECT MAX(id_dane) - 20 FROM dane)";
+                        $zapytanie = "SELECT * FROM dane WHERE id_dane > (SELECT MAX(id_dane) - ". $numberOfSamples ." FROM dane)";
                         $zap = mysqli_query($pol,$zapytanie);
-                        $i = 0;
+                        $i = 1;
                         while($row = $zap->fetch_assoc()) {
                             echo "[" 
                             . $i . ", " 
@@ -41,10 +47,10 @@
 
             var options = {
                 hAxis: {
-                title: 'Ostatnie 20 próbek'
+                title: 'Ostatnie pomiary temperatury ( najnowsza po prawej )'
                 },
                 vAxis: {
-                title: 'Temperatura'
+                title: 'Temperatura ( °C )'
                 },
                 series: {
                 1: {curveType: 'function'}
@@ -58,8 +64,21 @@
 </head>
 <body>
 
-    <div id="chart_div" style="height: 600px;"></div>
+    <a href="./index.php?param=2" style="margin: 30px;">
+        <img src="files/home.png" style="width: 45px; ">
+    </a>
 
+    <h3>
+        <b>Liczba próbek na wykresie:</b> <?php 
+            $numberOfSamples = '30';
+            if(isset($_POST["numberOfSamples"]) && $_POST["numberOfSamples"] != 0) {
+                $numberOfSamples = $_POST["numberOfSamples"];
+            } 
+            echo $numberOfSamples;
+        ?>
+    </h3>
+
+    <div id="chart_div" style="height: 600px;"></div>
 
 </body>
 </html> 

@@ -126,7 +126,6 @@
 			else {
 				echo "<b>Witam</b><br>
 					<br><img id='zdjecie' src='files/zdjGotowe1.JPEG' alt='zdjecie arduino2' style='width: 350px; height: auto;'>
-					<img id='zdjecie' src='files/zdjGotowe2.JPEG' alt='zdjecie arduino3' style='width: 350px; height: auto;'>
 					";
 			}
 			/*if(tr) {

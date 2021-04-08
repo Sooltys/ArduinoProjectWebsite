@@ -27,7 +27,7 @@
 				$temperatura = $_GET["temperatura"];
 				$wilgotnosc = $_GET["wilgotnosc"];
 				$ustawiona = $_GET["ustawiona"];
-				$dodawanie = "INSERT INTO dane (id_dane, data, temperatura, wilgotnosc, tempZadana) VALUES (NULL , CURRENT_TIMESTAMP, '$temperatura', '$wilgotnosc', '$ustawiona')";
+				$dodawanie = "INSERT INTO dane (id_dane, data, temperatura, wilgotnosc, tempZadana, time, date) VALUES (NULL , CURRENT_TIMESTAMP, '$temperatura', '$wilgotnosc', '$ustawiona', now(), now())";
 				$dodaj = mysqli_query($pol,$dodawanie);
 				$aktualizuj = "UPDATE temperaturaZadana SET temperatura='$ustawiona', dataZmiany=CURRENT_TIMESTAMP WHERE id=1";
 				$dodaj = mysqli_query($pol,$aktualizuj);
@@ -64,7 +64,7 @@
 					while($row = $zap->fetch_assoc()) {
 						echo "<div id='info'><b>Temperatura: </b>" . $row['temperatura'] . " °C";
 						echo "<br><br><b>Wilgotność: </b>" . $row['wilgotnosc'] . " %";
-						echo "<br><br><i>Ostatnie odebrane dane o: " . $row['data'] . "</i>";
+						echo "<br><br><i>Ostatnie odebrane dane o: <b>" . $row['time'] . "</b><br>" . $row['date'] . "</i>";
 					}
 					$zapytanie = "SELECT * FROM temperaturaZadana WHERE id=1";
 					$zap = mysqli_query($pol,$zapytanie);
@@ -100,9 +100,10 @@
 					echo "<table id ='dane'>
 						<tr>
 							<th>Lp.</th>
-							<th>Data</th>
 							<th>Temperatura</th>
 							<th>Wilgotność</th>
+							<th>Czas</th>
+							<th>Data</th>
 						</tr>";
 					// wyświetlanie danych
 					$zapytanie = "SELECT * FROM dane ORDER BY id_dane DESC";
@@ -110,9 +111,10 @@
 					while($row = $zap->fetch_assoc()) {
 						echo "<tr>
 						<td>" . $row['id_dane'] . "</td>
-						<td>" . $row['data'] . "</td>
 						<td>" . $row['temperatura'] . "</td>
 						<td>" . $row['wilgotnosc'] . "</td>
+						<td>" . $row['time'] . "</td>
+						<td>" . $row['date'] . "</td>
 						</tr>";
 					}
 					echo "</table>";
@@ -123,9 +125,8 @@
 			}
 			else {
 				echo "<b>Witam</b><br>
-					<br><img id='zdjecie' src='files/image2.JPEG' alt='zdjecie arduino1' style='width: 350px; height: auto;'>
 					<br><img id='zdjecie' src='files/zdjGotowe1.JPEG' alt='zdjecie arduino2' style='width: 350px; height: auto;'>
-					<img id='zdjecie' src='files/zdjGotowe2.JPEG' alt='zdjecie arduino3' style='width: auto; height: 350px;'>
+					<img id='zdjecie' src='files/zdjGotowe2.JPEG' alt='zdjecie arduino3' style='width: 350px; height: auto;'>
 					";
 			}
 			/*if(tr) {

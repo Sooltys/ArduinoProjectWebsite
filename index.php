@@ -17,9 +17,10 @@
 	<div id="main">
 	<?php
 	//łączenie z bazą danych SQL
-	$pol = mysqli_connect('db.zut.edu.pl','pj41491','OqSSzSFt');
+	require('connect.php');
+	$pol = mysqli_connect($host, $login, $password);
 	if($pol) {
-		$baza = mysqli_select_db($pol,'pj41491');
+		$baza = mysqli_select_db($pol, $database);
 		if($baza) {
 			// DLA ARDUINO
 			//pobieranie danych z GET i zapisywanie w bazie

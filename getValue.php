@@ -21,4 +21,4 @@
 	else {
 		//echo 'kom'.mysqli_error($pol);
 	}
-	?>
+?>

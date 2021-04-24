@@ -53,6 +53,11 @@
                 },
                 vAxis: {
                 title: 'Temperatura ( °C )'
+                },
+                series: {
+                    1: {
+                        lineDashStyle: [6, 4]
+                    }
                 }
             };
 

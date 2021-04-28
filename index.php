@@ -125,9 +125,9 @@
 				}
 			}
 			else {
-				echo "<b>Witam</b><br>
+				echo "<b>Panel kontrolny</b> urządzenia sterującego temperaturą w terrarium.<br>
 					<br><img id='zdjecie' src='files/zdjGotowe1.JPEG' alt='zdjecie arduino2' style='width: 350px; height: auto;'>
-					";
+				";
 			}
 			/*if(tr) {
 				mysqli_close($pol);
